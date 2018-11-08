@@ -24,7 +24,7 @@ def IngresoTabla(request):
     Fecha_nacimiento=response['Fecha_nacimiento'])
     return HttpResponse("Tabla creada")
 
-# En esta funcion hace INSERT de los datos a la tabla Vehiculo, reciviendo Json,
+# En esta funcion hace INSERT de los datos a la tabla Vehiculo con relacion del rut de la tabla persona, reciviendo Json,
 @csrf_exempt
 def IngresoTablaVehiculo(request):
     response = json.loads(request.body.decode("utf-8"))
@@ -42,12 +42,12 @@ def IngresoTablaVehiculo(request):
 def Tabla_Persona(request):
     get = Persona.objects.all()[:5]
     print(get)
-    lel = Persona.objects.get(Rut=123456789)
-    print(lel)
-    lel2 = Persona.objects.all().filter(Nombre="Juanito")
-    print(lel2)
-    lel3 = Persona.objects.all().values('Apellido_P', 'Apellido_M')
-    print(lel3)
+    get1 = Persona.objects.get(Rut=123456789)
+    print(get1)
+    get2 = Persona.objects.all().filter(Nombre="Juanito")
+    print(get2)
+    get3 = Persona.objects.all().values('Apellido_P', 'Apellido_M')
+    print(get3)
     return HttpResponse(get)
 
 # funcion que hace DELETE en la tabla
