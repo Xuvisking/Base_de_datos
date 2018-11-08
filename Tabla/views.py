@@ -5,12 +5,13 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 # Create your views here.
-
+#
+# funcion que hace una Consulta simple y devuelve un "recibido"
 def answer(request):
-    send = ("yas")
+    send = ("recibido")
     return HttpResponse(send)
 
-#En esta funcion hace INSERT de los datos a la tabla con reciviendo Json
+# En esta funcion hace INSERT de los datos a la tabla con reciviendo Json
 @csrf_exempt #==> esto es para saltarse protocolos de seguridad
 def IngresoTabla(request):
     response = json.loads(request.body.decode("utf-8"))
@@ -23,7 +24,7 @@ def IngresoTabla(request):
     Fecha_nacimiento=response['Fecha_nacimiento'])
     return HttpResponse("Tabla creada")
 
-#funcion que hace SELECT en la tabla
+# funcion que hace SELECT en la tabla
 def Tabla_Persona(request):
     get = Persona.objects.all()[:5]
     print(get)
@@ -35,7 +36,7 @@ def Tabla_Persona(request):
     print(lel3)
     return HttpResponse(get)
 
-#funcion que hace DELETE en la tabla
+# funcion que hace DELETE en la tabla
 @csrf_exempt
 def deleteTabla(request):
     response = json.loads(request.body.decode("utf-8"))
@@ -44,7 +45,7 @@ def deleteTabla(request):
     delTab.delete()
     return HttpResponse('deleted')
 
-#funcion que hace UPDATE en la tabla
+# funcion que hace UPDATE en la tabla
 @csrf_exempt
 def updateTabla(request):
     response = json.loads(request.body.decode("utf-8"))

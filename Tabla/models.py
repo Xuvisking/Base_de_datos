@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 #--------------------------
-# En esta seccion se hace la construccion de las tablas, donde las clases son las entidades
+# En esta seccion se hace la construccion (CREATE) de las tablas, donde las clases son las entidades
 # y el contenido de estas son los atributos, donde clave primaria se escoje con primary_key=True
 # como parametro en el atributo a escojer
 #--------------------------
@@ -20,7 +20,6 @@ from django.db import models
 # many-to-many se agrega:
 # models.ManyToManyField(Clase_a_heredar)
 
-
 class Persona(models.Model):
     Rut = models.IntegerField(primary_key=True)
     Nombre = models.CharField(max_length=200)
@@ -28,6 +27,7 @@ class Persona(models.Model):
     Apellido_M = models.CharField(max_length=200)  
     Direccion = models.CharField(max_length=200)   
     Fecha_nacimiento = models.DateField(blank=True)
+
 
 class Vehiculo(models.Model):
     Nombre = models.CharField(max_length=200,primary_key=True)
