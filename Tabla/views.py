@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Persona
+from .models import *
 from django.views.decorators.csrf import csrf_exempt
 import json
 
@@ -11,7 +11,7 @@ def answer(request):
     send = ("recibido")
     return HttpResponse(send)
 
-# En esta funcion hace INSERT de los datos a la tabla con reciviendo Json
+# En esta funcion hace INSERT de los datos a la tabla Persona, reciviendo Json
 @csrf_exempt #==> esto es para saltarse protocolos de seguridad
 def IngresoTabla(request):
     response = json.loads(request.body.decode("utf-8"))
@@ -22,6 +22,20 @@ def IngresoTabla(request):
     Apellido_M=response['Apellido_M'],
     Direccion=response['Direccion'],
     Fecha_nacimiento=response['Fecha_nacimiento'])
+    return HttpResponse("Tabla creada")
+
+# En esta funcion hace INSERT de los datos a la tabla Vehiculo, reciviendo Json,
+@csrf_exempt
+def IngresoTablaVehiculo(request):
+    response = json.loads(request.body.decode("utf-8"))
+    print(response)
+    insert = Vehiculo.objects.create(Patente=response['Patente'],
+    Modelo=response['Modelo'],
+    Marca=response['Marca'],
+    year=response['year'],
+    Num_chasis=response['Num_chasis'],
+    Num_motor=response['Num_motor'],
+    Rut_persona=Persona.objects.get(Rut=response['Rut_persona']))
     return HttpResponse("Tabla creada")
 
 # funcion que hace SELECT en la tabla

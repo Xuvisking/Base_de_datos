@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^GetPersona/$', views.Tabla_Persona, name='Tabla_Persona'),
     url(r'^DelPersona/$', views.deleteTabla, name='deleteTabla'),
     url(r'^UpdPersona/$', views.updateTabla, name='updateTabla'),
+    url(r'^IngresoTablaVehiculo/$', views.IngresoTablaVehiculo, name='IngresoTablaVehiculo'),
 ]

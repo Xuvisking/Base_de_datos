@@ -28,9 +28,8 @@ class Persona(models.Model):
     Direccion = models.CharField(max_length=200)   
     Fecha_nacimiento = models.DateField(blank=True)
 
-
 class Vehiculo(models.Model):
-    Nombre = models.CharField(max_length=200,primary_key=True)
+    Patente = models.CharField(max_length=200,primary_key=True)
     Modelo = models.CharField(max_length=200)
     Marca = models.CharField(max_length=200)
     year = models.DateField()
@@ -51,7 +50,7 @@ class Sucursal(models.Model):
 class P_circulacion(models.Model):
     PCir_id = models.CharField(max_length=200,primary_key=True)
     Fecha_vencimiento= models.DateField()
-    Patente = models.OneToOneField(
+    Patente_vehiculo = models.OneToOneField(
         Vehiculo,
         on_delete=models.CASCADE,
     )
@@ -61,25 +60,22 @@ class P_circulacion(models.Model):
 class R_tecnica(models.Model):
     RTec_id = models.IntegerField(primary_key=True)
     Vigencia = models.DateField()
-    Patente = models.OneToOneField(
+    Patente_vehiculo = models.OneToOneField(
         Vehiculo,
         on_delete=models.CASCADE,
     )
-    num_chasis = models.IntegerField()
-    num_motor = models.IntegerField()
 
 class S_obligatorio(models.Model):
     SObl_id = models.CharField(max_length=200,primary_key=True)
     Fecha_vencimiento = models.DateField()
-    Patente = models.OneToOneField(
+    Patente_vehiculo = models.OneToOneField(
         Vehiculo,
         on_delete=models.CASCADE,
     )
     
 class Multa(models.Model):
     Multa_id = models.CharField(max_length=200,primary_key=True)
-    Patente = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
-    Muni_id = models.CharField(max_length=200)
+    Patente_vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
     Valor = models.IntegerField()
     Fecha_emision = models.DateField()
     descripcion = models.CharField(max_length=200)
