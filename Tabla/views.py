@@ -40,12 +40,16 @@ def IngresoTablaVehiculo(request):
 
 # funcion que hace SELECT en la tabla
 def Tabla_Persona(request):
-    get = Persona.objects.all()[:5]
+    #retorna todos los datos de la tabla
+    get = Persona.objects.all()
     print(get)
+    #retorna todos los datos correspondiente al rut 123456789
     get1 = Persona.objects.get(Rut=123456789)
     print(get1)
+    #retorna todas las claves que tengan el nombre de Juanito
     get2 = Persona.objects.all().filter(Nombre="Juanito")
     print(get2)
+    #retorna todos los valores de Apellido_P y Apellido_M
     get3 = Persona.objects.all().values('Apellido_P', 'Apellido_M')
     print(get3)
     return HttpResponse(get)
