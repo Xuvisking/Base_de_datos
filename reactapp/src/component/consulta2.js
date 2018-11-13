@@ -89,7 +89,7 @@ export default withStyles(styles)(class extends React.Component {
 		          />
 		        </FormControl>
 		        </div>
-                <img src="https://www.nacionrex.com/__export/1539901148403/sites/debate/img/2018/10/18/viejo_lesbiano_origen_del_meme_callese_significado.jpg_1834093470.jpg" alt="Smiley face" height="350"></img> 
+                <img src="http://pm1.narvii.com/6208/41189d3e9af8e16b5f6687297180c2475d8adeba_00.jpg" alt="Smiley face" height="350"></img> 
                 <div>
 		        <Button variant="fab" color="primary" aria-label="Send" onClick={this.sendSueldo} className={classes.button}>
         			<SendIcon />

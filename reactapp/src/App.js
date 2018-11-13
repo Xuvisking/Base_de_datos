@@ -20,8 +20,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SendIcon from '@material-ui/icons/Send';
 import Home from './component/home.js';
 import Consulta from './component/consulta.js';
-import file3 from './component/file3.js';
-import file4 from './component/file4.js';
+import Consulta2 from './component/consulta2';
+import Consulta3 from './component/consulta3';
 
 const drawerWidth = 240;
 
@@ -96,7 +96,7 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ open: false });
   };
 
-  handleChange = (event, value) => this.setState({value})
+  handleChange = (value) => this.setState({value})
 
   render() {
     const { classes, theme } = this.props;
@@ -142,7 +142,7 @@ class PersistentDrawerLeft extends React.Component {
           <Divider />
           <List>
             {['Lomito', 'UMU', 'UwU', 'Callese Viejo Lesbiano'].map((text, index) => (
-              <ListItem button key={text} onClick={this.handleChange}>
+              <ListItem button key={text} onClick={() => this.handleChange(index)} >
                 <ListItemIcon><SendIcon /></ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -155,9 +155,10 @@ class PersistentDrawerLeft extends React.Component {
           })}
         > 
           <div className={classes.drawerHeader} />
-          {
-            this.state.value === 0 ? <Home/> : <Consulta/>
-          }
+          { this.state.value === 0 && <Home/> }
+          { this.state.value === 1 && <Consulta/> }
+          { this.state.value === 2 && <Consulta2/> }
+          { this.state.value === 3 && <Consulta3/> }
         </main>
       </div>
     );
