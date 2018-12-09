@@ -38,8 +38,12 @@ const styles = theme => ({
 
 export default withStyles(styles)(class extends React.Component {
 	  state = {
-	  	comision: '',
-			sueldo: '',
+			fecha: '',
+			dir: '',
+			AM: '',
+			AP: '',
+	  	nombre: '',
+			rut: '',
 			open: false,
 			resultado: null,
 	  };
@@ -49,16 +53,16 @@ export default withStyles(styles)(class extends React.Component {
 	  handleClose = () => {
     	this.setState({ open: false });
   	  };
-	  sendSueldo = () => {
+	  sendCI = () => {
 	  	this.setState({ open: true });
-	  	fetch('http://127.0.0.1:8000/bruto_liquido/', {
+	  	fetch('http://127.0.0.1:8000/Tabla/IngresoTabla/', {
 				method: 'POST',
 				mode: 'cors',
-				body: JSON.stringify({sueldo: this.state.sueldo, afp: parseFloat(this.state.comision)/100})
+				body: JSON.stringify({Rut: this.state.rut, Nombre: this.state.nombre, Apellido_P: this.state.AP, Apellido_M: this.state.AM, Direccion: this.state.dir, Fecha_nacimiento: this.state.fecha})
 			})
 				.then(res => res.text())
 				.then(res => this.setState({
-					resultado: (parseInt(this.state.sueldo, 10) > 0 && parseFloat(this.state.comision) >= 0) ? res : 'Por favor ingrese datos válidos'
+					resultado: (parseInt(this.state.rut, 10) > 0) ? res : 'Por favor ingrese datos válidos'
 				}))
 		}
 		
@@ -69,42 +73,86 @@ export default withStyles(styles)(class extends React.Component {
 	      <div className="TabContainer">
 		      	<div className={classes.root}>
 		        <FormControl fullWidth className={classes.margin}>
-		          <InputLabel htmlFor="adornment-sueldo">Rut</InputLabel>
+		          <InputLabel htmlFor="adornment-rut">Rut</InputLabel>
 		          <Input
-								id="adornment-sueldo"
-		            value={this.state.sueldo}
-		            onChange={this.handleChange('sueldo')}
+								id="adornment-rut"
+		            value={this.state.rut}
+		            onChange={this.handleChange('rut')}
 		            startAdornment={<InputAdornment position="start">></InputAdornment>}
 		          />
 		        </FormControl>
 		        </div>
 		        <div className={classes.root}>
 		        <FormControl fullWidth className={classes.margin}>
-		          <InputLabel htmlFor="adornment-comision">Nombre</InputLabel>
+		          <InputLabel htmlFor="adornment-nombre">Nombre</InputLabel>
 		          <Input
-		            id="adornment-comision"
-		            value={this.state.comision}
-		            onChange={this.handleChange('comision')}
+		            id="adornment-nombre"
+		            value={this.state.nombre}
+		            onChange={this.handleChange('nombre')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		        </div>
+						<div className={classes.root}>
+		        <FormControl fullWidth className={classes.margin}>
+		          <InputLabel htmlFor="adornment-AP">Apellido Paterno</InputLabel>
+		          <Input
+								id="adornment-AP"
+		            value={this.state.AP}
+		            onChange={this.handleChange('AP')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		        </div>
+						<div className={classes.root}>
+		        <FormControl fullWidth className={classes.margin}>
+		          <InputLabel htmlFor="adornment-AM">Apellido Materno</InputLabel>
+		          <Input
+								id="adornment-AM"
+		            value={this.state.AM}
+		            onChange={this.handleChange('AM')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		        </div>
+						<div className={classes.root}>
+		        <FormControl fullWidth className={classes.margin}>
+		          <InputLabel htmlFor="adornment-dir">Direccion</InputLabel>
+		          <Input
+								id="adornment-dir"
+		            value={this.state.dir}
+		            onChange={this.handleChange('dir')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		        </div>
+						<div className={classes.root}>
+		        <FormControl fullWidth className={classes.margin}>
+		          <InputLabel htmlFor="adornment-fecha">Fecha de nacimiento</InputLabel>
+		          <Input
+								id="adornment-fecha"
+		            value={this.state.fecha}
+		            onChange={this.handleChange('fecha')}
 		            startAdornment={<InputAdornment position="start">></InputAdornment>}
 		          />
 		        </FormControl>
 		        </div>
                 <img src="http://pm1.narvii.com/6208/41189d3e9af8e16b5f6687297180c2475d8adeba_00.jpg" alt="Smiley face" height="350"></img> 
                 <div>
-		        <Button variant="fab" color="primary" aria-label="Send" onClick={this.sendSueldo} className={classes.button}>
+		        <Button variant="fab" color="primary" aria-label="Send" onClick={this.sendCI} className={classes.button}>
         			<SendIcon />
       			</Button>
-		        {(parseInt(this.state.sueldo, 10) > 0 && parseFloat(this.state.comision) >= 0) ?
+						{(parseInt(this.state.rut, 10)>0) ?
 							<Dialog
 		          open={this.state.open}
 		          onClose={this.handleClose}
 		          aria-labelledby="alert-dialog-title"
 		          aria-describedby="alert-dialog-description"
 		        >
-		          <DialogTitle id="alert-dialog-title">{"Tu sueldo Bruto es:"}</DialogTitle>
+		          <DialogTitle id="alert-dialog-title">{"Los datos ingresados son:"}</DialogTitle>
 		          <DialogContent>
 		            <DialogContentText id="alert-dialog-description" style={{fontSize: 40}}>
-		              ${this.state.resultado}
+		              {this.state.resultado}
 		            </DialogContentText>
 		          </DialogContent>
 		          <DialogActions>

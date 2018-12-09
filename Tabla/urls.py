@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path('', views.answer, name='answer'),
+    url(r'^consultaTabla/$', views.consultaTabla, name='consultaTabla'),
     url(r'^IngresoTabla/$', views.IngresoTabla, name='IngresoTabla'),
     url(r'^GetPersona/$', views.Tabla_Persona, name='Tabla_Persona'),
     url(r'^DelPersona/$', views.deleteTabla, name='deleteTabla'),

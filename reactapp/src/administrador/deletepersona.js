@@ -11,6 +11,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -18,7 +19,8 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   margin: {
-    margin: theme.spacing.unit,
+		margin: theme.spacing.unit,
+		minWidth: 150,
   },
   withoutLabel: {
     marginTop: theme.spacing.unit * 3,
@@ -49,16 +51,18 @@ export default withStyles(styles)(class extends React.Component {
 	  handleClose = () => {
     	this.setState({ open: false });
   	  };
-	  sendSueldo = () => {
+			sendCI = () => {
 	  	this.setState({ open: true });
-	  	fetch('http://127.0.0.1:8000/bruto_liquido/', {
+	  	fetch('http://127.0.0.1:8080/Tabla/DelPersona/', {
 				method: 'POST',
 				mode: 'cors',
-				body: JSON.stringify({sueldo: this.state.sueldo, afp: parseFloat(this.state.comision)/100})
+				body: JSON.stringify({
+					Rut: this.state.rut
 			})
+		})
 				.then(res => res.text())
 				.then(res => this.setState({
-					resultado: (parseInt(this.state.sueldo, 10) > 0 && parseFloat(this.state.comision) >= 0) ? res : 'Por favor ingrese datos válidos'
+						resultado: (parseInt(this.state.rut, 10) > 0) ? res : 'Por favor ingrese datos válidos'
 				}))
 		}
 		
@@ -67,44 +71,37 @@ export default withStyles(styles)(class extends React.Component {
 
 	    return (
 	      <div className="TabContainer">
+                <div>
+				<Typography variant="h6" color="inherit" noWrap>
+                    Ingrese el RUT de la persona a eliminar
+                </Typography>
+				</div>
 		      	<div className={classes.root}>
-		        <FormControl fullWidth className={classes.margin}>
-		          <InputLabel htmlFor="adornment-sueldo">Rut</InputLabel>
+		        <FormControl className={classes.margin}>
+		          <InputLabel htmlFor="adornment-rut">Rut</InputLabel>
 		          <Input
-								id="adornment-sueldo"
-		            value={this.state.sueldo}
-		            onChange={this.handleChange('sueldo')}
+								id="adornment-rut"
+		            value={this.state.rut}
+		            onChange={this.handleChange('rut')}
 		            startAdornment={<InputAdornment position="start">></InputAdornment>}
 		          />
 		        </FormControl>
 		        </div>
 		        <div className={classes.root}>
-		        <FormControl fullWidth className={classes.margin}>
-		          <InputLabel htmlFor="adornment-comision">Nombre</InputLabel>
-		          <Input
-		            id="adornment-comision"
-		            value={this.state.comision}
-		            onChange={this.handleChange('comision')}
-		            startAdornment={<InputAdornment position="start">></InputAdornment>}
-		          />
-		        </FormControl>
-		        </div>
-                <img src="https://pbs.twimg.com/media/DK02NvcVwAALWQ4.jpg" alt="Smiley face" height="350"></img> 
-                <div>
-		        <Button variant="fab" color="primary" aria-label="Send" onClick={this.sendSueldo} className={classes.button}>
+		        <Button variant="fab" color="primary" aria-label="Send" onClick={this.sendCI} className={classes.button}>
         			<SendIcon />
       			</Button>
-		        {(parseInt(this.state.sueldo, 10) > 0 && parseFloat(this.state.comision) >= 0) ?
+						{(parseInt(this.state.rut, 10)>0) ?
 							<Dialog
 		          open={this.state.open}
 		          onClose={this.handleClose}
 		          aria-labelledby="alert-dialog-title"
 		          aria-describedby="alert-dialog-description"
 		        >
-		          <DialogTitle id="alert-dialog-title">{"Tu sueldo Bruto es:"}</DialogTitle>
+		          <DialogTitle id="alert-dialog-title">{"Datos correctamente ingresados"}</DialogTitle>
 		          <DialogContent>
 		            <DialogContentText id="alert-dialog-description" style={{fontSize: 40}}>
-		              ${this.state.resultado}
+		              {this.state.resultado}
 		            </DialogContentText>
 		          </DialogContent>
 		          <DialogActions>

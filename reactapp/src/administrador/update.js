@@ -73,8 +73,7 @@ export default withStyles(styles)(class extends React.Component {
 	      <div className="TabContainer">
                 <div>
 				<Typography variant="h6" color="inherit" noWrap>
-                    ¡Hola! y bienvenido al sistema de consultas de multas a la izquierda tuyo tienes un panel
-										de opciones, o si quieres puedes consultar alguna multa ingresando tu rut abajo.
+                    Actualiza los datos!
                 </Typography>
 				</div>
 		      	<div className={classes.root}>
