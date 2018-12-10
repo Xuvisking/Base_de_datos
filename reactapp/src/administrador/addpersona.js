@@ -51,6 +51,7 @@ const styles = theme => ({
 
 class SimpleSelect extends React.Component {
   state = {
+		estado: '',
     muni: '',
     Suc: '',
     labelWidth: 0,
@@ -327,15 +328,23 @@ class SimpleSelect extends React.Component {
 		        </FormControl>
                 </div>
                 <div className={classes.root}>
-                <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-estado">Estado</InputLabel>
-		          <Input
-								id="adornment-estado"
-		            value={this.state.estado}
-		            onChange={this.handleChange('estado')}
-		            startAdornment={<InputAdornment position="start">></InputAdornment>}
-		          />
-		        </FormControl>
+                    <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="adornment-estado">Estado</InputLabel>
+                    <Select
+                        value={this.state.estado}
+                        onChange={this.handleChange1}
+                        inputProps={{
+                        name: 'estado',
+                        id: 'adornment-estado',
+                        }}
+                    >
+                    <MenuItem value="">
+                    <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={'Pagado'}>Pagado</MenuItem>
+                    <MenuItem value={'No pagado'}>No pagado</MenuItem>
+                    </Select>
+                    </FormControl>
                 </div>
                 <Typography variant="h6" color="inherit" noWrap>
                     Datos del permiso de circulacion

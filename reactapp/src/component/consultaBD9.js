@@ -53,7 +53,7 @@ export default withStyles(styles)(class extends React.Component {
   	  };
 			sendCI = () => {
 	  	this.setState({ open: true });
-	  	fetch('http://127.0.0.1:8080/Tabla/consultaTabla/', {
+	  	fetch('http://127.0.0.1:8080/Tabla/BD9/', {
 				method: 'POST',
 				mode: 'cors',
 				body: JSON.stringify({
@@ -71,16 +71,10 @@ export default withStyles(styles)(class extends React.Component {
 
 	    return (
 	      <div className="TabContainer">
-                <div>
-				<Typography variant="h6" color="inherit" noWrap>
-                    ¡Hola! y bienvenido al sistema de consultas de multas a la izquierda tuyo tienes un panel
-										
+                <Typography variant="h6" color="inherit" noWrap>
+                Numero de vehıculos que posee un mismo dueño
                 </Typography>
-								<Typography variant="h6" color="inherit" noWrap>
-								de opciones, o si quieres puedes consultar alguna multa ingresando tu rut abajo.
-                </Typography>
-				</div>
-		      	<div className={classes.root}>
+								<div className={classes.root}>
 		        <FormControl className={classes.margin}>
 		          <InputLabel htmlFor="adornment-rut">Rut</InputLabel>
 		          <Input

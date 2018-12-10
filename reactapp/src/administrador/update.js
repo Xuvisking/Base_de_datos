@@ -53,11 +53,12 @@ export default withStyles(styles)(class extends React.Component {
   	  };
 			sendCI = () => {
 	  	this.setState({ open: true });
-	  	fetch('http://127.0.0.1:8080/Tabla/consultaTabla/', {
+	  	fetch('http://127.0.0.1:8080/Tabla/UpdPersona/', {
 				method: 'POST',
 				mode: 'cors',
 				body: JSON.stringify({
-					Rut: this.state.rut
+					Rut: this.state.rut, Nombre: this.state.nombre, Apellido_P: this.state.AP, 
+                    Apellido_M: this.state.AM, Direccion: this.state.dir, Fecha_nacimiento: this.state.fecha,
 			})
 		})
 				.then(res => res.text())
@@ -73,7 +74,7 @@ export default withStyles(styles)(class extends React.Component {
 	      <div className="TabContainer">
                 <div>
 				<Typography variant="h6" color="inherit" noWrap>
-                    Actualiza los datos!
+                    Ingrese RUT al cual actualizar los datos
                 </Typography>
 				</div>
 		      	<div className={classes.root}>
@@ -87,6 +88,64 @@ export default withStyles(styles)(class extends React.Component {
 		          />
 		        </FormControl>
 		        </div>
+                <div>
+				<Typography variant="h6" color="inherit" noWrap>
+                    Ingrese los datos a cambiar
+                </Typography>
+				</div>
+                <div className={classes.root}>
+		       
+		        <FormControl className={classes.margin}>
+		          <InputLabel htmlFor="adornment-nombre">Nombre</InputLabel>
+		          <Input
+		            id="adornment-nombre"
+		            value={this.state.nombre}
+		            onChange={this.handleChange('nombre')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		       
+		        <FormControl className={classes.margin}>
+		          <InputLabel htmlFor="adornment-AP">Apellido Paterno</InputLabel>
+		          <Input
+								id="adornment-AP"
+		            value={this.state.AP}
+		            onChange={this.handleChange('AP')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		       
+		        <FormControl className={classes.margin}>
+		          <InputLabel htmlFor="adornment-AM">Apellido Materno</InputLabel>
+		          <Input
+								id="adornment-AM"
+		            value={this.state.AM}
+		            onChange={this.handleChange('AM')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		        </div>
+						<div className={classes.root}>
+		        <FormControl className={classes.margin}>
+		          <InputLabel htmlFor="adornment-dir">Direccion</InputLabel>
+		          <Input
+								id="adornment-dir"
+		            value={this.state.dir}
+		            onChange={this.handleChange('dir')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+		        
+		        <FormControl className={classes.margin}>
+		          <InputLabel htmlFor="adornment-fecha">Fecha de nacimiento</InputLabel>
+		          <Input
+								id="adornment-fecha"
+		            value={this.state.fecha}
+		            onChange={this.handleChange('fecha')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+                </div>
 		        <div className={classes.root}>
 		        <Button variant="fab" color="primary" aria-label="Send" onClick={this.sendCI} className={classes.button}>
         			<SendIcon />

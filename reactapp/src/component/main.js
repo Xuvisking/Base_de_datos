@@ -18,8 +18,22 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SendIcon from '@material-ui/icons/Send';
 import Consulta from './consulta.js';
-import Consulta2 from './consulta2';
-import Consulta3 from './consulta3';
+import ConsultaBD from './consultaBD.js';
+import ConsultaBD2 from './consultaBD2.js';
+import ConsultaBD3 from './consultaBD3.js';
+import ConsultaBD4 from './consultaBD4.js';
+import ConsultaBD5 from './consultaBD5.js';
+import ConsultaBD6 from './consultaBD6.js';
+import ConsultaBD7 from './consultaBD7.js';
+import ConsultaBD8 from './consultaBD8.js';
+import ConsultaBD9 from './consultaBD9.js';
+import ConsultaBD10 from './consultaBD10.js';
+import ConsultaBD11 from './consultaBD11.js';
+import ConsultaBD12 from './consultaBD12.js';
+import ConsultaBD13 from './consultaBD13.js';
+import ConsultaBD14 from './consultaBD14.js';
+import ConsultaBD15 from './consultaBD15.js';
+
 
 const drawerWidth = 240;
 
@@ -139,7 +153,7 @@ class PersistentDrawerLeft extends React.Component {
           </div>
           <Divider />
           <List>
-            {['Consulta de Multa', 'UwU', 'Callese Viejo Lesbiano'].map((text, index) => (
+            {['Consulta de Multa','BD1','BD2','BD3','BD4','BD5','BD6','BD7','BD8','BD9','BD10','BD11','BD12','BD13','BD14','BD15'].map((text, index) => (
               <ListItem button key={text} onClick={() => this.handleChange(index)} >
                 <ListItemIcon><SendIcon /></ListItemIcon>
                 <ListItemText primary={text} />
@@ -154,8 +168,22 @@ class PersistentDrawerLeft extends React.Component {
         > 
           <div className={classes.drawerHeader} />
           { this.state.value === 0 && <Consulta/> }
-          { this.state.value === 1 && <Consulta2/> }
-          { this.state.value === 2 && <Consulta3/> }
+          { this.state.value === 1 && <ConsultaBD/> }
+          { this.state.value === 2 && <ConsultaBD2/> }
+          { this.state.value === 3 && <ConsultaBD3/> }
+          { this.state.value === 4 && <ConsultaBD4/> }
+          { this.state.value === 5 && <ConsultaBD5/> }
+          { this.state.value === 6 && <ConsultaBD6/> }
+          { this.state.value === 7 && <ConsultaBD7/> }
+          { this.state.value === 8 && <ConsultaBD8/> }
+          { this.state.value === 9 && <ConsultaBD9/> }
+          { this.state.value === 10 && <ConsultaBD10/> }
+          { this.state.value === 11 && <ConsultaBD11/> }
+          { this.state.value === 12 && <ConsultaBD12/> }
+          { this.state.value === 13 && <ConsultaBD13/> }
+          { this.state.value === 14 && <ConsultaBD14/> }
+          { this.state.value === 15 && <ConsultaBD15/> }
+
         </main>
       </div>
     );

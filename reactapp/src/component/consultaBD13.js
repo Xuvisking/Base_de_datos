@@ -1,9 +1,11 @@
-import React from 'react'
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import Dialog from '@material-ui/core/Dialog';
@@ -32,6 +34,10 @@ const styles = theme => ({
     position: 'fixed',
     bottom: 20,
     right: 20,
+	},
+	formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 150,
   },
   extendedIcon: {
     marginRight: theme.spacing.unit,
@@ -40,11 +46,16 @@ const styles = theme => ({
 
 export default withStyles(styles)(class extends React.Component {
 	  state = {
+			rut: 1000,
+			muni: '',
 	  	comision: '',
 			sueldo: '',
 			open: false,
 			resultado: null,
-	  };
+		};
+		handleChange1 = event => {
+			this.setState({ [event.target.name]: event.target.value });
+		};
 	  handleChange = prop => event => {
 	    this.setState({ [prop]: event.target.value });
 	  };
@@ -53,11 +64,11 @@ export default withStyles(styles)(class extends React.Component {
   	  };
 			sendCI = () => {
 	  	this.setState({ open: true });
-	  	fetch('http://127.0.0.1:8080/Tabla/consultaTabla/', {
+	  	fetch('http://127.0.0.1:8080/Tabla/BD13/', {
 				method: 'POST',
 				mode: 'cors',
 				body: JSON.stringify({
-					Rut: this.state.rut
+					muni: this.state.muni,Marca: this.state.Marca
 			})
 		})
 				.then(res => res.text())
@@ -71,26 +82,41 @@ export default withStyles(styles)(class extends React.Component {
 
 	    return (
 	      <div className="TabContainer">
-                <div>
-				<Typography variant="h6" color="inherit" noWrap>
-                    ¡Hola! y bienvenido al sistema de consultas de multas a la izquierda tuyo tienes un panel
-										
+                <Typography variant="h6" color="inherit" noWrap>
+                Numero de vehıculos de una misma marca que sacaron su permiso de circulacion en
+determinada municipalidad
                 </Typography>
-								<Typography variant="h6" color="inherit" noWrap>
-								de opciones, o si quieres puedes consultar alguna multa ingresando tu rut abajo.
-                </Typography>
-				</div>
-		      	<div className={classes.root}>
+								<form className={classes.root} autoComplete="off">
+                    <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="adornment-muni">Municipalidad</InputLabel>
+                    <Select
+                        value={this.state.muni}
+                        onChange={this.handleChange1}
+                        inputProps={{
+                        name: 'muni',
+                        id: 'adornment-muni',
+                        }}
+                    >
+                    <MenuItem value="">
+                    <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={'Lo Prado'}>Lo Prado</MenuItem>
+                    <MenuItem value={'Maipu'}>Maipu</MenuItem>
+                    <MenuItem value={'Pudahuel'}>Pudahuel</MenuItem>
+                    </Select>
+                    </FormControl>
+										<div className={classes.root}>
 		        <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-rut">Rut</InputLabel>
+		          <InputLabel htmlFor="adornment-Marca">Marca</InputLabel>
 		          <Input
-								id="adornment-rut"
-		            value={this.state.rut}
-		            onChange={this.handleChange('rut')}
+								id="adornment-Marca"
+		            value={this.state.Marca}
+		            onChange={this.handleChange('Marca')}
 		            startAdornment={<InputAdornment position="start">></InputAdornment>}
 		          />
 		        </FormControl>
 		        </div>
+                </form>
 		        <div className={classes.root}>
 		        <Button variant="fab" color="primary" aria-label="Send" onClick={this.sendCI} className={classes.button}>
         			<SendIcon />

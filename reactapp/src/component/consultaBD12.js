@@ -53,11 +53,11 @@ export default withStyles(styles)(class extends React.Component {
   	  };
 			sendCI = () => {
 	  	this.setState({ open: true });
-	  	fetch('http://127.0.0.1:8080/Tabla/consultaTabla/', {
+	  	fetch('http://127.0.0.1:8080/Tabla/BD12/', {
 				method: 'POST',
 				mode: 'cors',
 				body: JSON.stringify({
-					Rut: this.state.rut
+					Rut: this.state.rut , FDH: this.state.FDH
 			})
 		})
 				.then(res => res.text())
@@ -71,22 +71,25 @@ export default withStyles(styles)(class extends React.Component {
 
 	    return (
 	      <div className="TabContainer">
-                <div>
-				<Typography variant="h6" color="inherit" noWrap>
-                    ¡Hola! y bienvenido al sistema de consultas de multas a la izquierda tuyo tienes un panel
-										
+                <Typography variant="h6" color="inherit" noWrap>
+                Vehıculo(s) de una persona que no tenga su permiso de circulacion al dia
                 </Typography>
-								<Typography variant="h6" color="inherit" noWrap>
-								de opciones, o si quieres puedes consultar alguna multa ingresando tu rut abajo.
-                </Typography>
-				</div>
-		      	<div className={classes.root}>
+								<div className={classes.root}>
 		        <FormControl className={classes.margin}>
 		          <InputLabel htmlFor="adornment-rut">Rut</InputLabel>
 		          <Input
 								id="adornment-rut"
 		            value={this.state.rut}
 		            onChange={this.handleChange('rut')}
+		            startAdornment={<InputAdornment position="start">></InputAdornment>}
+		          />
+		        </FormControl>
+						<FormControl className={classes.margin}>
+		          <InputLabel htmlFor="adornment-FDH">Fecha de hoy</InputLabel>
+		          <Input
+								id="adornment-FDH"
+		            value={this.state.FDH}
+		            onChange={this.handleChange('FDH')}
 		            startAdornment={<InputAdornment position="start">></InputAdornment>}
 		          />
 		        </FormControl>

@@ -40,6 +40,7 @@ const styles = theme => ({
 
 export default withStyles(styles)(class extends React.Component {
 	  state = {
+			rut:1000,
 	  	comision: '',
 			sueldo: '',
 			open: false,
@@ -53,11 +54,11 @@ export default withStyles(styles)(class extends React.Component {
   	  };
 			sendCI = () => {
 	  	this.setState({ open: true });
-	  	fetch('http://127.0.0.1:8080/Tabla/consultaTabla/', {
+	  	fetch('http://127.0.0.1:8080/Tabla/BD14/', {
 				method: 'POST',
 				mode: 'cors',
 				body: JSON.stringify({
-					Rut: this.state.rut
+					Patente: this.state.Patente
 			})
 		})
 				.then(res => res.text())
@@ -71,22 +72,17 @@ export default withStyles(styles)(class extends React.Component {
 
 	    return (
 	      <div className="TabContainer">
-                <div>
-				<Typography variant="h6" color="inherit" noWrap>
-                    ¡Hola! y bienvenido al sistema de consultas de multas a la izquierda tuyo tienes un panel
-										
+
+                <Typography variant="h6" color="inherit" noWrap>
+                Dado una patente, saber si un vehıculo puede obtener revision tecnica
                 </Typography>
-								<Typography variant="h6" color="inherit" noWrap>
-								de opciones, o si quieres puedes consultar alguna multa ingresando tu rut abajo.
-                </Typography>
-				</div>
-		      	<div className={classes.root}>
+								<div className={classes.root}>
 		        <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-rut">Rut</InputLabel>
+		          <InputLabel htmlFor="adornment-Patente">Patente</InputLabel>
 		          <Input
-								id="adornment-rut"
-		            value={this.state.rut}
-		            onChange={this.handleChange('rut')}
+								id="adornment-Patente"
+		            value={this.state.Patente}
+		            onChange={this.handleChange('Patente')}
 		            startAdornment={<InputAdornment position="start">></InputAdornment>}
 		          />
 		        </FormControl>
