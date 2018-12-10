@@ -164,7 +164,7 @@ class SimpleSelect extends React.Component {
                 </Typography>
                 <div className={classes.root}>
 		        <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-rut">Rut</InputLabel>
+		          <InputLabel htmlFor="adornment-rut">Rut (ENTERO)</InputLabel>
 		          <Input
 								id="adornment-rut"
 		            value={this.state.rut}
@@ -215,7 +215,7 @@ class SimpleSelect extends React.Component {
 		        </FormControl>
 		        
 		        <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-fecha">Fecha de nacimiento</InputLabel>
+		          <InputLabel htmlFor="adornment-fecha">Fecha de nacimiento (AÑO-MES-DIA)</InputLabel>
 		          <Input
 								id="adornment-fecha"
 		            value={this.state.fecha}
@@ -257,7 +257,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
 		        <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-yearauto">Año</InputLabel>
+		          <InputLabel htmlFor="adornment-yearauto">Año (AÑO-MES-DIA)</InputLabel>
 		          <Input
 								id="adornment-yearauto"
 		            value={this.state.yearauto}
@@ -268,7 +268,7 @@ class SimpleSelect extends React.Component {
                 </div>             
                 <div className={classes.root}>
                 <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-NChasis">Numero de chasis</InputLabel>
+		          <InputLabel htmlFor="adornment-NChasis">Numero de chasis (ENTERO)</InputLabel>
 		          <Input
 								id="adornment-NChasis"
 		            value={this.state.NChasis}
@@ -277,7 +277,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
 		        <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-NMotor">Numero de motor</InputLabel>
+		          <InputLabel htmlFor="adornment-NMotor">Numero de motor (ENTERO)</InputLabel>
 		          <Input
 								id="adornment-NMotor"
 		            value={this.state.NMotor}
@@ -300,7 +300,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
 		        <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-valor">Valor</InputLabel>
+		          <InputLabel htmlFor="adornment-valor">Valor (ENTERO)</InputLabel>
 		          <Input
 								id="adornment-valor"
 		            value={this.state.valor}
@@ -309,7 +309,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
                 <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-FEmis">Fecha de emision</InputLabel>
+		          <InputLabel htmlFor="adornment-FEmis">Fecha de emision (AÑO-MES-DIA)</InputLabel>
 		          <Input
 								id="adornment-FEmis"
 		            value={this.state.FEmis}
@@ -360,7 +360,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
                 <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-VenPer">Fecha de vencimiento</InputLabel>
+		          <InputLabel htmlFor="adornment-VenPer">Fecha de vencimiento (AÑO-MES-DIA)</InputLabel>
 		          <Input
 								id="adornment-VenPer"
 		            value={this.state.VenPer}
@@ -369,7 +369,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
                 <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-PrecioPer">Precio</InputLabel>
+		          <InputLabel htmlFor="adornment-PrecioPer">Precio (ENTERO)</InputLabel>
 		          <Input
 								id="adornment-PrecioPer"
 		            value={this.state.PrecioPer}
@@ -383,7 +383,7 @@ class SimpleSelect extends React.Component {
                 </Typography>
                 <div className={classes.root}>
                 <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-RevID">Revision tecnica ID</InputLabel>
+		          <InputLabel htmlFor="adornment-RevID">Revision tecnica ID (ENTERO)</InputLabel>
 		          <Input
 								id="adornment-RevID"
 		            value={this.state.RevID}
@@ -392,7 +392,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
                 <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-vigenciaRev">Vigencia</InputLabel>
+		          <InputLabel htmlFor="adornment-vigenciaRev">Vigencia (AÑO-MES-DIA)</InputLabel>
 		          <Input
 								id="adornment-vigenciaRev"
 		            value={this.state.vigenciaRev}
@@ -415,7 +415,7 @@ class SimpleSelect extends React.Component {
 		          />
 		        </FormControl>
                 <FormControl className={classes.margin}>
-		          <InputLabel htmlFor="adornment-venSO">Fecha de vencimiento</InputLabel>
+		          <InputLabel htmlFor="adornment-venSO">Fecha de vencimiento (AÑO-MES-DIA)</InputLabel>
 		          <Input
 								id="adornment-venSO"
 		            value={this.state.venSO}
