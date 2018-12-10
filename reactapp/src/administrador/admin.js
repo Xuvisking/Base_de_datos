@@ -20,6 +20,7 @@ import SendIcon from '@material-ui/icons/Send';
 import Addpersona from './addpersona';
 import Deletepersona from './deletepersona';
 import Updatepersona from './update';
+import Addmulta from './addmulta';
 
 const drawerWidth = 240;
 
@@ -139,7 +140,7 @@ class PersistentDrawerLeft extends React.Component {
           </div>
           <Divider />
           <List>
-            {['Agregar persona','Eliminar persona','Actualizar datos'].map((text, index) => (
+            {['Agregar persona','Eliminar persona','Actualizar datos','Añadir multa'].map((text, index) => (
               <ListItem button key={text} onClick={() => this.handleChange(index)} >
                 <ListItemIcon><SendIcon /></ListItemIcon>
                 <ListItemText primary={text} />
@@ -155,7 +156,8 @@ class PersistentDrawerLeft extends React.Component {
           <div className={classes.drawerHeader} />
 					{ this.state.value === 0 && <Addpersona/> }
 					{ this.state.value === 1 && <Deletepersona/> }
-					{ this.state.value === 2 && <Updatepersona/> }
+          { this.state.value === 2 && <Updatepersona/> }
+          { this.state.value === 3 && <Addmulta/> }
         </main>
       </div>
     );

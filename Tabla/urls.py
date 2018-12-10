@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^BD13/$', views.BD13, name='BD13'),
     url(r'^BD14/$', views.BD14, name='BD14'),
     url(r'^BD15/$', views.BD15, name='BD15'),
+    url(r'^Addmulta/$', views.Addmulta, name='Addmulta'),
 
 ]

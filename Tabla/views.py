@@ -240,13 +240,13 @@ def BD5(request):
     response = json.loads(request.body.decode("utf-8"))
     print(response)
     response = Multa.objects.all().filter(Patente_vehiculo=response['Patente']).values('descripcion')
-    x=0
+    print(response)
+    resultado1=""
     for i in response:
-        resultado2 = (" Multa por : ", response[x]['descripcion'])
+        resultado2 = (" Multa por : ", i['descripcion'])
         print (resultado2)
-        resultado1 += resultado2
-        x=x+1
-    response = HttpResponse(resultado)
+        resultado1 = resultado1 + resultado2[0] + resultado2[1]
+    response = HttpResponse(resultado1)
     response["Access-Control-Allow-Origin"] = "*"
     response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
     response["Access-Control-Max-Age"] = "1000"
@@ -427,6 +427,26 @@ def BD15(request):
     response = P_circulacion.objects.all().filter(Patente_vehiculo=response['Patente']).values('Fecha_vencimiento')
     aux= (str(response[0]['Fecha_vencimiento'])).split("-")
     resultado = ("Lo saco el dia : ", str(int(aux[0])-4),"-",aux[1],"-",aux[2])
+    response = HttpResponse(resultado)
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+    return response
+
+@csrf_exempt
+def Addmulta(request):
+    response = json.loads(request.body.decode("utf-8"))
+    print(response)
+    insert_multa = Multa.objects.create(
+        Multa_id = response['Multaid'],
+        Patente_vehiculo = Vehiculo.objects.get(Patente=response['Patente']),
+        Valor = response['Valormulta'],
+        Fecha_emision = response['Fechamulta'],
+        descripcion = response['Desmulta'],
+        estado = response['Estmulta']
+    )
+    resultado = ("Multa creada!")
     response = HttpResponse(resultado)
     response["Access-Control-Allow-Origin"] = "*"
     response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
