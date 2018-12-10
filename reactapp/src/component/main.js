@@ -153,7 +153,12 @@ class PersistentDrawerLeft extends React.Component {
           </div>
           <Divider />
           <List>
-            {['Consulta de Multa','BD1','BD2','BD3','BD4','BD5','BD6','BD7','BD8','BD9','BD10','BD11','BD12','BD13','BD14','BD15'].map((text, index) => (
+            {['Consulta de Multa','Dueño del vehiculo','Vencimiento PC','Municipalidad que otrogo PS',
+            'Monto pagagado por PC','Multas del vehiculo','Consulta si la RV esta al dia',
+            'Vehiculo con SO vigente','Die en que vehiculos pagaron el PC','Num de vehiculos que posee un dueño',
+            'Marca del vehiculo','Dueño del vehiculo','vehiculos de un dueño que no tenga PC al dia'
+            ,'Num de vehiculos de misma marca que sacara su PC en una misma municipalidad','Ver si un vehiculo puede ibtener una RT'
+            ,'Fecha en que se saco el PC'].map((text, index) => (
               <ListItem button key={text} onClick={() => this.handleChange(index)} >
                 <ListItemIcon><SendIcon /></ListItemIcon>
                 <ListItemText primary={text} />
